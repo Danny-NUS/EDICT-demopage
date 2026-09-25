@@ -1,0 +1,50 @@
+\begin{table}[!t]
+\centering
+\caption{\textbf{Attribute-operation accuracy (\%) on 500 TimbreEdit-Bench requests.}
+Gemini compares source and generated audio without the target recording.
+Up/Down assesses ordinal direction, Category assesses categorical targets,
+and Preservation assesses unchanged attributes.
+Best and second-best scores within each instruction form are
+\textbf{bold} and \underline{underlined}.}
+\label{tab:res_timbre_attrib_op}
+\footnotesize
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.02}
+\resizebox{0.80\linewidth}{!}{%
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+\textbf{System} & \textbf{Instruction}
+ & Up Acc.$\uparrow$ & Down Acc.$\uparrow$
+ & Category Acc.$\uparrow$ & Preservation$\uparrow$ \\
+\midrule
+\multirow{2}{*}{Qwen3-TTS-VD}
+ & Structured
+ & 67.0 & 64.3 & 53.2 & \textbf{83.3} \\
+ & Descriptive
+ & 60.0 & 63.0 & 49.8 & \textbf{85.0} \\
+\addlinespace[1.5pt]
+\multirow{2}{*}{Qwen3-TTS-Base}
+ & Structured
+ & 62.3 & 54.5 & 46.4 & 45.7 \\
+ & Descriptive
+ & 66.0 & 54.5 & 50.0 & 45.6 \\
+\addlinespace[1.5pt]
+\multirow{2}{*}{CosyVoice 2}
+ & Structured
+ & \underline{68.1} & \underline{65.5}
+ & \underline{57.7} & \underline{68.2} \\
+ & Descriptive
+ & \underline{72.2} & \underline{73.3}
+ & \underline{69.0} & 66.2 \\
+\addlinespace[1.5pt]
+\multirow{2}{*}{\textbf{EDICT}}
+ & Structured
+ & \textbf{70.8} & \textbf{80.6}
+ & \textbf{89.3} & 66.7 \\
+ & Descriptive
+ & \textbf{77.9} & \textbf{79.1}
+ & \textbf{91.7} & \underline{70.1} \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2855f6">
+  <meta name="description" content="EDICT: global timbre editing and local instruction control for text-to-speech. Explore voice editing, changing delivery, and the research behind them.">
+  <title>EDICT | Global Timbre Editing and Local Instruction Control for TTS</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%232855f6'/%3E%3Cpath d='M11 17v6m6-12v18m6-15v12m6-9v6' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="academic.css">
+  <script src="demo-data.js" defer></script>
+  <script src="results-data.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="sections.js" defer></script>
+</head>
+<body>
+  <noscript><p class="noscript-message">Enable JavaScript to browse the audio examples and numerical results.</p></noscript>
+  <a class="skip-link" href="#listen">Skip to audio examples</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="#top" aria-label="EDICT home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>EDICT<span class="brand-caption">RESEARCH DEMO</span></a>
+      <nav aria-label="Main navigation"><a href="#abstract">Abstract</a><a href="#listen">Audio</a><a href="#method">Method</a><a href="#results">Results</a></nav>
+    </div>
+  </header>
+  <main id="top">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-topline"><span class="eyebrow">ANONYMOUS RESEARCH DEMO</span></div>
+      <h1 id="hero-title"><span class="hero-name">EDICT:</span> Global Timbre Editing and<br class="title-break"> Local Instruction Control for TTS</h1>
+      <div class="hero-intro"><p>Edit who speaks. Control how they speak.</p><div class="hero-actions"><a class="button primary" href="#listen">Explore joint control <span aria-hidden="true">↓</span></a></div></div>
+    </section>
+
+    <section class="section listening-section" id="listen" aria-labelledby="listen-title">
+      <div class="wrap"><div class="section-heading"><div><h2 id="listen-title">Joint control</h2></div><p>Compare the contribution of the timbre editor and cache reconstruction under the same global and local instructions.</p></div>
+        <div class="demo-shell" data-demo="joint"><div class="demo-toolbar"><div class="demo-title"><strong>Global timbre + local delivery</strong></div><div class="language-switch" role="group" aria-label="Joint control example language"><button type="button" data-language="en" aria-pressed="true">English</button><button type="button" data-language="zh" aria-pressed="false">中文</button></div></div><div class="example-toolbar"><label for="joint-example">Example</label><select id="joint-example" data-example-picker aria-label="Joint control example" aria-controls="joint-content"></select></div><div id="joint-content"></div></div>
+        <p class="placeholder-note"><span aria-hidden="true">◌</span> Audio is forthcoming. All scripts are proposed examples, not a selected benchmark subset.</p><div class="comparison-protocol"><strong>Comparison protocol.</strong> Joint and Concat. use the original reference and global edit request. Editor + concat. and Full EDICT use the same edited reference. All systems synthesize the same text with the same local instructions.</div>
+      </div>
+    </section>
+
+    <section class="abstract-section wrap" id="abstract" aria-labelledby="abstract-title">
+      <div class="abstract-label"><h2 id="abstract-title">Abstract</h2></div>
+      <div class="abstract-copy"><p>Instruction-based text-to-speech requires control over both <strong>who speaks</strong> and <strong>how each segment is delivered</strong>. EDICT connects a trainable, reference-conditioned timbre editor with a frozen autoregressive TTS backbone. The editor maps a source voice and attribute operations to an edited codec reference, which remains a shared voice anchor across successive segments. At instruction boundaries, EDICT reconstructs the key–value cache under the new conditions, using retained initial and recent acoustic inputs to support speaker consistency and continuity.</p><p>The two modules compose without joint training; local control requires no additional backbone training. Experiments on TimbreEdit-Bench and IntraTTS-Bench evaluate the two controls separately and together. Results show improved edit accuracy and local instruction control, alongside trade-offs in attribute preservation and content fidelity.</p></div>
+    </section>
+
+    <section class="section method-section" id="method" aria-labelledby="method-title">
+      <div class="wrap"><div class="section-heading"><div><h2 id="method-title">Method overview</h2></div><p>A trainable timbre editor and a frozen TTS backbone compose through a shared edited reference.</p></div>
+        <div class="method-steps"><article><span class="step-index">01</span><h3>Interpret the edit</h3><p>Map a natural-language request to operations on nine perceptual voice attributes. Unmentioned attributes receive a keep operation.</p></article><article><span class="step-index">02</span><h3>Create a voice anchor</h3><p>The trained editor produces an edited codec reference, reused across all segments of the subsequent synthesis.</p></article><article><span class="step-index">03</span><h3>Refresh the context</h3><p>At each instruction switch, reconstruct the KV cache using the new instruction, shared reference, and initial and recent acoustic context.</p></article></div>
+        <figure class="paper-figure"><button type="button" class="figure-button" data-figure="assets/figures/framework_overview.png" aria-label="Enlarge EDICT framework overview"><img src="assets/figures/framework_overview.png" alt="EDICT framework: a global timbre editor generates an edited voice reference shared by successive locally directed speech segments." loading="lazy" width="2072" height="845"><span class="figure-enlarge">Expand figure ↗</span></button><figcaption><span>FIGURE 01</span> Global voice editing and local delivery control in one synthesis pipeline.</figcaption></figure>
+        <details class="method-details"><summary><span>What changes at an instruction boundary?</span><span class="details-action">Explore the KV cache ↗</span></summary><div class="cache-layout"><p>Cached acoustic states can carry conditioning from an earlier instruction. EDICT discards the old cache and recomputes selected acoustic inputs under the new conditions. Initial context supplies evidence of the established voice; recent context supplies continuation cues. The generated segments remain in one codec stream.<br><br>The local control stage requires no additional backbone training.</p><button type="button" class="figure-button" data-figure="assets/figures/kv_cache_reconstruction.png" aria-label="Enlarge KV cache reconstruction figure"><img src="assets/figures/kv_cache_reconstruction.png" alt="KV cache reconstruction at segment boundaries, showing retained initial and recent acoustic inputs and updated causal attention." loading="lazy"><span class="figure-enlarge">Expand figure ↗</span></button></div></details>
+      </div>
+    </section>
+
+    <section class="section voice-section" id="voice" aria-labelledby="voice-title">
+      <div class="wrap"><div class="section-heading"><div><h2 id="voice-title">Timbre editing</h2></div><p>Describe a change relative to a reference voice, from one attribute to a combination of edits.</p></div>
+        <div class="demo-shell" data-demo="voice"><div class="demo-toolbar"><div class="case-tabs" role="group" aria-label="Voice editing example"><button type="button" data-case="single" aria-pressed="true">Single attribute</button><button type="button" data-case="composed" aria-pressed="false">Combined edits</button><button type="button" data-case="category" aria-pressed="false">Age impression</button></div><div class="language-switch" role="group" aria-label="Voice editing example language"><button type="button" data-language="en" aria-pressed="true">English</button><button type="button" data-language="zh" aria-pressed="false">中文</button></div></div><div class="example-toolbar"><label for="voice-example">Example</label><select id="voice-example" data-example-picker aria-label="Timbre editing example" aria-controls="voice-content"></select></div><div id="voice-content"></div></div>
+        <div class="comparison-protocol"><strong>Comparison protocol.</strong> Instruction-conditioned systems receive the source reference and the same edit request. The target reference is provided only for listening comparison. Target-reference voice conversion is reported separately in the results.</div><div class="attribute-row"><span>Nine voice attributes</span><p>Perceived gender · Age impression · Pitch register · Brightness · Vocal weight · Resonance focus · Roughness · Breathiness · Nasality</p></div>
+      </div>
+    </section>
+    <section class="section" id="delivery" aria-labelledby="delivery-title">
+      <div class="wrap"><div class="section-heading"><div><h2 id="delivery-title">Local instruction control</h2></div><p>Listen across instruction boundaries: does the expression change, and does the voice still sound connected?</p></div>
+        <div class="demo-shell" data-demo="delivery"><div class="demo-toolbar"><div class="case-tabs" role="group" aria-label="Local delivery example"><button type="button" data-case="emotion" aria-pressed="true">Emotion</button><button type="button" data-case="pace" aria-pressed="false">Speaking rate</button><button type="button" data-case="emphasis" aria-pressed="false">Pauses & emphasis</button></div><div class="language-switch" role="group" aria-label="Local delivery example language"><button type="button" data-language="en" aria-pressed="true">English</button><button type="button" data-language="zh" aria-pressed="false">中文</button></div></div><div class="example-toolbar"><label for="delivery-example">Example</label><select id="delivery-example" data-example-picker aria-label="Local instruction control example" aria-controls="delivery-content"></select></div><div id="delivery-content"></div></div>
+        <p class="listening-tip"><span>Listen for</span> Instruction Following within each segment, speaker consistency across segments, and the naturalness of each transition.</p>
+      </div>
+    </section>
+
+    <section class="section" id="results" aria-labelledby="results-title">
+      <div class="wrap"><div class="section-heading"><div><h2 id="results-title">Results</h2></div><p>Three tasks: global timbre editing, local instruction control, and their joint application.</p></div>
+        <div class="evaluation-scope"><span><strong>TimbreEdit-Bench</strong> · 1,955 source–target pairs · 200 held-out voice profiles</span><span><strong>IntraTTS-Bench</strong> · 997 requests · Chinese and English</span></div>
+        <section class="mos-section" aria-labelledby="mos-title">
+          <div class="figure-heading"><div><h3 id="mos-title">Mean opinion scores</h3></div></div>
+          <p class="mos-intro">19 listeners · Five-point scales · 10 timbre-editing and 12 local-control items per system</p>
+          <div class="mos-grid">
+            <figure class="mos-card"><div class="mos-card-heading"><h4>(a) Timbre editing</h4><label>Criterion <select data-mos-task="timbre" aria-label="Timbre MOS criterion"><option value="Edit-MOS">Edit Accuracy</option><option value="N-MOS">Naturalness</option><option value="S-MOS">Target similarity</option></select></label></div><button class="figure-button" type="button" data-figure="assets/charts/mos-timbre-edit-mos.svg" aria-label="Enlarge timbre MOS chart"><picture><source media="(max-width: 760px)" srcset="assets/charts/mos-timbre-edit-mos-compact.svg"><img id="mos-timbre" src="assets/charts/mos-timbre-edit-mos-compact.svg" alt="Timbre editing Edit-MOS: mean ratings and reported confidence-interval display, compared across five systems." loading="lazy"></picture><span class="figure-enlarge">Expand figure ↗</span></button><figcaption id="mos-timbre-caption">Edit Accuracy evaluates requested changes and explicit preservation requirements. Seed-VC receives target audio and is not evaluated on this criterion.</figcaption></figure>
+            <figure class="mos-card"><div class="mos-card-heading"><h4>(b) Local instruction control</h4><label>Criterion <select data-mos-task="intra" aria-label="Local control MOS criterion"><option value="Trans-MOS">Transition quality</option><option value="Instr-MOS">Instruction Following</option><option value="N-MOS">Naturalness</option></select></label></div><button class="figure-button" type="button" data-figure="assets/charts/mos-intra-trans-mos.svg" aria-label="Enlarge local control MOS chart"><picture><source media="(max-width: 760px)" srcset="assets/charts/mos-intra-trans-mos-compact.svg"><img id="mos-intra" src="assets/charts/mos-intra-trans-mos-compact.svg" alt="Local-control Trans-MOS: mean ratings and reported confidence-interval display, compared across four Qwen-VD systems." loading="lazy"></picture><span class="figure-enlarge">Expand figure ↗</span></button><figcaption id="mos-intra-caption">Transition quality assesses a consistent voice naturally changing expression. All four systems use the Qwen-VD backbone.</figcaption></figure>
+          </div>
+          <p class="statistical-note">Mean ratings on a five-point scale with the reported 95% confidence-interval display. Blue marks identify EDICT.</p>
+          <details class="mos-values"><summary>Evaluation protocol and exact scores <span aria-hidden="true">↓</span></summary><p class="statistical-note">Points show the mean of item-level listener averages. Whiskers reproduce the reported symmetric display of 95% bootstrap confidence intervals from 10,000 audio-item resamples: the half-width is the larger distance from the mean to either interval endpoint. † Seed-VC uses target audio. Blue circles identify EDICT; the open diamond distinguishes Seed-VC.</p><div id="mos-table"></div></details>
+        </section>
+        <div class="results-heading"><div><h3>Main experimental comparisons</h3></div></div>
+        <p class="results-reading-note">All experimental conditions are shown below. Highlighted rows identify EDICT, not the best value in every column.</p>
+        <div id="results-content" class="experiments"></div>
+        <div class="research-note"><p><strong>Observed trade-offs.</strong> EDICT improves edit accuracy, while Qwen-VD better preserves unedited attributes. Cache reconstruction improves local control and transitions, with increased recognition errors relative to Joint. Independent synthesis retains the strongest isolated segment accuracy.</p></div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer wrap"><span>EDICT · Anonymous research demo</span><a href="#top">Back to top ↑</a></footer>
+  <dialog id="figure-dialog" aria-label="Enlarged research figure"><button class="dialog-close" type="button" aria-label="Close enlarged figure">Close ×</button><img alt=""><p></p></dialog>
+</body>
+</html>

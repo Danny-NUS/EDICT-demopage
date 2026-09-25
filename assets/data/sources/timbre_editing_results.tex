@@ -1,0 +1,88 @@
+\begin{table}[!t]
+\centering
+\caption{\textbf{Objective results on TimbreEdit-Bench.}
+CER/WER reports Chinese CER / English WER in percent.
+SIM-T/R denotes target/source similarity;
+$\Delta=\mathrm{SIM\text{-}T}-\mathrm{SIM\text{-}R}$.
+Best and second-best scores within each instruction form are
+\textbf{bold} and \underline{underlined}, with CER and WER ranked separately;
+SIM-R is unranked.
+Target-reference voice conversion receives target audio and is evaluated
+separately on a same-text subset, with its best similarity and $\Delta$
+scores in \textbf{bold}.}
+\label{tab:res_timbre_main}
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.24}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}ll*{9}{c}@{}}
+\toprule
+\multirow{2}{*}{\textbf{System}}
+ & \multirow{2}{*}{\textbf{Instruction}}
+ & \multicolumn{3}{c}{\textbf{Content and quality}}
+ & \multicolumn{3}{c}{\textbf{WavLM}}
+ & \multicolumn{3}{c}{\textbf{ERes2Net}} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}\cmidrule(l){9-11}
+ & & CER/WER (\%)$\downarrow$
+ & UTMOS$\uparrow$ & DNSMOS$\uparrow$
+ & SIM-T$\uparrow$ & SIM-R & $\Delta\uparrow$
+ & SIM-T$\uparrow$ & SIM-R & $\Delta\uparrow$ \\
+\midrule
+\multicolumn{11}{@{}l}{\textit{Instruction-conditioned systems}} \\
+\addlinespace[3pt]
+\multirow{2}{*}{Qwen3-TTS-VD}
+ & Structured
+ & \underline{4.5} / \textbf{0.3}
+ & \underline{3.861} & \underline{3.946}
+ & \underline{0.701} & 0.871 & $\underline{-0.170}$
+ & \underline{0.450} & 0.745 & $\underline{-0.295}$ \\
+ & Descriptive
+ & \textbf{3.0} / \textbf{0.3}
+ & \underline{3.830} & \underline{3.965}
+ & \underline{0.676} & 0.832 & $\underline{-0.156}$
+ & \underline{0.435} & 0.714 & $\underline{-0.279}$ \\
+\addlinespace[4pt]
+\multirow{2}{*}{Qwen3-TTS-Base}
+ & Structured
+ & 5.1 / 1.9 & 3.742 & 3.805
+ & 0.632 & 0.950 & $-0.318$
+ & 0.431 & 0.845 & $-0.414$ \\
+ & Descriptive
+ & \underline{3.3} / \underline{1.1} & 3.756 & 3.776
+ & 0.637 & 0.950 & $-0.313$
+ & 0.434 & 0.849 & $-0.415$ \\
+\addlinespace[4pt]
+\multirow{2}{*}{CosyVoice 2}
+ & Structured
+ & 6.9 / 4.2 & \textbf{3.941} & \textbf{4.065}
+ & 0.646 & 0.918 & $-0.272$
+ & 0.396 & 0.825 & $-0.429$ \\
+ & Descriptive
+ & 7.9 / 2.5 & \textbf{4.021} & \textbf{4.104}
+ & 0.644 & 0.937 & $-0.293$
+ & 0.419 & 0.854 & $-0.435$ \\
+\addlinespace[4pt]
+\multirow{2}{*}{\textbf{EDICT}}
+ & Structured
+ & \textbf{4.1} / \underline{1.7} & 3.830 & 3.942
+ & \textbf{0.819} & 0.620 & \textbf{0.199}
+ & \textbf{0.653} & 0.442 & \textbf{0.211} \\
+ & Descriptive
+ & 4.0 / \underline{1.1} & 3.816 & 3.963
+ & \textbf{0.793} & 0.598 & \textbf{0.195}
+ & \textbf{0.648} & 0.441 & \textbf{0.207} \\
+\midrule
+\multicolumn{11}{@{}l}{\textit{Target-reference voice conversion}} \\
+\addlinespace[3pt]
+FreeVC & N/A
+ & 3.2 / 2.0 & 3.911 & 3.968
+ & 0.873 & 0.671 & 0.202
+ & 0.570 & 0.387 & 0.183 \\
+Seed-VC & N/A
+ & 3.0 / 2.5 & 3.342 & 3.893
+ & \textbf{0.957} & 0.659 & \textbf{0.298}
+ & \textbf{0.889} & 0.463 & \textbf{0.427} \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}

@@ -1,0 +1,50 @@
+\begin{table}[!t]
+\centering
+\caption{\textbf{KV cache reconstruction ablations on IntraTTS-Bench.}
+All variants use Qwen-VD. The full configuration retains the first
+$S=4$ and most recent $K=5$ acoustic positions; the context ablations
+remove one of these groups. Persistent and truncated caches reuse
+old KV states, whereas EDICT recomputes them.
+Best and second-best scores are \textbf{bold} and \underline{underlined},
+with CER and WER ranked separately.}
+\label{tab:res_cache_ablation}
+\footnotesize
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.08}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l*{7}{c}@{}}
+\toprule
+\multirow{2}{*}{\textbf{Configuration}}
+    & \multicolumn{3}{c}{\textbf{Control (\%)}}
+    & \textbf{Consistency}
+    & \multicolumn{3}{c}{\textbf{Content and quality}} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-5}\cmidrule(l){6-8}
+    & SegAcc$\uparrow$ & EmoAcc$\uparrow$ & Trans$\uparrow$
+    & SIM-I$\uparrow$ & CER/WER (\%)$\downarrow$
+    & UTMOS$\uparrow$ & DNSMOS$\uparrow$ \\
+\midrule
+Persistent KV cache
+    & 54.25 & 54.02 & 68.00 & \textbf{0.918}
+    & \textbf{3.9} / \textbf{0.8}
+    & 3.555 & \textbf{3.953} \\
+Truncated KV cache
+    & 58.05 & 56.70 & 64.94 & 0.892
+    & 4.4 / \underline{1.1}
+    & 3.278 & 3.905 \\
+\midrule
+\textbf{EDICT (full)}
+    & \underline{82.30} & \underline{83.60} & \textbf{82.00}
+    & \underline{0.915} & 5.1 / 1.8
+    & \textbf{3.631} & \underline{3.930} \\
+\quad w/o initial context
+    & \textbf{89.29} & \textbf{89.00} & \underline{79.99}
+    & 0.863 & 4.3 / 1.4
+    & \underline{3.585} & 3.896 \\
+\quad w/o recent context
+    & 81.15 & 82.26 & 55.32 & 0.875
+    & \underline{4.2} / \underline{1.1}
+    & 3.548 & 3.830 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}

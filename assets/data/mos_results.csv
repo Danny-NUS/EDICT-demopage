@@ -1,0 +1,28 @@
+task,system,metric,mean,interval_half_width
+timbre,Qwen3-TTS-VD,N-MOS,4.07,0.10
+timbre,Qwen3-TTS-VD,Edit-MOS,2.99,0.11
+timbre,Qwen3-TTS-VD,S-MOS,2.50,0.06
+timbre,Qwen3-TTS-Base,N-MOS,3.94,0.11
+timbre,Qwen3-TTS-Base,Edit-MOS,2.01,0.10
+timbre,Qwen3-TTS-Base,S-MOS,2.05,0.06
+timbre,CosyVoice 2,N-MOS,3.76,0.07
+timbre,CosyVoice 2,Edit-MOS,1.88,0.09
+timbre,CosyVoice 2,S-MOS,1.56,0.11
+timbre,EDICT,N-MOS,4.02,0.09
+timbre,EDICT,Edit-MOS,3.94,0.10
+timbre,EDICT,S-MOS,3.57,0.10
+timbre,Seed-VC,N-MOS,3.58,0.09
+timbre,Seed-VC,Edit-MOS,,
+timbre,Seed-VC,S-MOS,4.03,0.11
+intra,Concat.,N-MOS,3.96,0.10
+intra,Concat.,Instr-MOS,4.24,0.08
+intra,Concat.,Trans-MOS,2.08,0.08
+intra,Joint,N-MOS,4.08,0.07
+intra,Joint,Instr-MOS,2.50,0.07
+intra,Joint,Trans-MOS,4.10,0.09
+intra,TED-TTS adaptation,N-MOS,3.84,0.08
+intra,TED-TTS adaptation,Instr-MOS,3.82,0.08
+intra,TED-TTS adaptation,Trans-MOS,3.94,0.11
+intra,EDICT,N-MOS,4.02,0.09
+intra,EDICT,Instr-MOS,4.08,0.11
+intra,EDICT,Trans-MOS,4.11,0.07

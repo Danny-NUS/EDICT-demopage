@@ -1,0 +1,58 @@
+% Required packages: booktabs, graphicx, multirow.
+\begin{table}[!t]
+    \centering
+    \caption{\textbf{Intra-utterance emotion control on 500 MED-TTS examples.}
+    CER/WER denotes Chinese CER or English WER in percent.
+    Emo2v is emotion2vec+ large classification accuracy in percent;
+    SIM-I measures inter-segment speaker similarity.
+    TCD is reported as $10^{-3}\mathrm{TCD}$, and OVRL denotes DNSMOS OVRL.
+    Best and second-best scores within each language are
+    \textbf{bold} and \underline{underlined}.}
+    \label{tab:medtts_overall}
+    \footnotesize
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.04}
+    \resizebox{0.8\linewidth}{!}{%
+    \begin{tabular}{@{}ll*{6}{c}@{}}
+        \toprule
+        \textbf{Language} & \textbf{System}
+            & CER/WER$\downarrow$
+            & Emo2v$\uparrow$ & SIM-I$\uparrow$
+            & TCD$\downarrow$
+            & OVRL$\uparrow$ & UTMOS$\uparrow$ \\
+        \midrule
+        \multirow{4}{*}{Chinese}
+            & Concat.
+            & \underline{1.74} & \textbf{85.56} & 0.589
+            & 0.488 & 3.665 & 3.528 \\
+            & Joint
+            & \textbf{1.57} & 61.48 & \textbf{0.856}
+            & \underline{0.425}
+            & \underline{3.692} & \textbf{3.763} \\
+            & TED-TTS
+            & 2.68 & 76.32 & \underline{0.843}
+            & 0.449 & \textbf{3.698} & 3.698 \\
+            & \textbf{EDICT}
+            & 2.47 & \underline{79.96} & 0.838
+            & \textbf{0.392}
+            & 3.679 & \underline{3.721} \\
+        \midrule
+        \multirow{4}{*}{English}
+            & Concat.
+            & 1.18 & \textbf{88.33} & 0.667
+            & 0.467 & \textbf{3.799} & 3.550 \\
+            & Joint
+            & \textbf{0.30} & 59.47 & \underline{0.929}
+            & 0.487
+            & \underline{3.754} & \textbf{4.040} \\
+            & TED-TTS
+            & \underline{0.69} & 80.91 & 0.919
+            & \underline{0.463}
+            & 3.676 & \underline{3.875} \\
+            & \textbf{EDICT}
+            & 1.09 & \underline{85.81} & \textbf{0.932}
+            & \textbf{0.357} & 3.739 & 3.863 \\
+        \bottomrule
+    \end{tabular}%
+    }
+\end{table}
