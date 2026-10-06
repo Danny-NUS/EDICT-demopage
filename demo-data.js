@@ -1,814 +1,531 @@
-/* Proposed demo scripts. Audio remains intentionally empty until real examples are selected.
-   Update each script, instruction and audio together. boundaries contains real segment end times in seconds. */
+/* Selected qualitative examples. PCM audio preserved; display wording maintained separately. */
 window.EDICT_DEMOS = {
   "joint": {
     "en": [
       {
-        "title": "From quiet to wonder",
-        "edit": "Make the voice brighter, keeping the other voice attributes unchanged.",
+        "id": "joint_en_01",
+        "title": "Sadness → hope",
+        "text": "The rain kept falling, mirroring the tears in my heart. But then I saw a rainbow breaking through the clouds!",
         "tags": [
-          "Brightness ↑",
-          "Shared voice anchor"
+          "Perceived gender & breathiness",
+          "Synthesis reference",
+          "Two expressions"
         ],
+        "listen": "Compare the voice with the synthesis reference and listen for the shift from sadness to hope at “But then”.",
+        "audio": {
+          "source": "assets/audio/joint_en_01_source_reference.wav",
+          "target": "assets/audio/joint_en_01_synthesis_reference.wav",
+          "edict": "assets/audio/joint_en_01_edict.wav"
+        },
+        "durations": {
+          "source": 7.52,
+          "target": 5.36,
+          "edict": 7.04
+        },
         "segments": [
           {
-            "style": "Calm",
-            "instruction": "Calm, steady narration",
-            "text": "In a quiet village, the wind moved through the trees.",
-            "tone": "calm"
+            "text": "The rain kept falling, mirroring the tears in my heart.",
+            "instruction": "Speak with sadness and grief.",
+            "style": "Sad & grieving"
           },
           {
-            "style": "Excited",
-            "instruction": "Excited, energetic emphasis",
-            "text": "And suddenly, a bright light filled the sky!",
-            "tone": "excited"
-          },
-          {
-            "style": "Gentle",
-            "instruction": "Soft, gentle ending",
-            "text": "Then everything became still.",
-            "tone": "gentle"
+            "text": "But then I saw a rainbow breaking through the clouds!",
+            "instruction": "Suddenly become hopeful and uplifting!",
+            "style": "Hopeful & uplifting"
           }
         ],
-        "audio": {
-          "source": "",
-          "reference": "",
-          "edict": "",
-          "joint": "",
-          "concat": "",
-          "editorConcat": ""
-        },
-        "boundaries": [],
-        "id": "joint-en-01"
+        "boundaries": [
+          4.0,
+          7.04
+        ],
+        "edit": "Turn this voice into a noticeably breathy female persona, shifting away from the original male's deep chest resonance to adopt a shallow head resonance, and increasing the initially slight breathiness to a noticeable level.",
+        "referenceMode": "supplied-target"
       },
       {
-        "title": "A fuller voice across changing pace",
-        "edit": "Lower the pitch register and increase vocal weight. Keep the other voice attributes unchanged.",
+        "id": "joint_en_02",
+        "title": "Nervous whisper → panic → relief",
+        "text": "Don't move. I can hear it getting closer, the footsteps echoing through the empty hallway, the lights flickering on and off, and there's something scratching at the door! Just the wind.",
         "tags": [
-          "Pitch register ↓",
-          "Vocal weight ↑"
+          "Perceived gender & resonance",
+          "Synthesis reference",
+          "Three expressions"
         ],
+        "listen": "Listen for a nervous whisper, rising panic through the longer middle segment, and relief on “Just the wind”, while comparing the voice with the synthesis reference.",
+        "audio": {
+          "source": "assets/audio/joint_en_02_source_reference.wav",
+          "target": "assets/audio/joint_en_02_synthesis_reference.wav",
+          "edict": "assets/audio/joint_en_02_edict.wav"
+        },
+        "durations": {
+          "source": 6.16,
+          "target": 4.72,
+          "edict": 9.76
+        },
         "segments": [
           {
-            "style": "Measured",
-            "instruction": "Begin slowly and evenly",
-            "text": "The train had stopped just beyond the bend.",
-            "tone": "calm"
+            "text": "Don't move.",
+            "instruction": "Whisper nervously.",
+            "style": "Nervous whisper"
           },
           {
-            "style": "Urgent",
-            "instruction": "Speed up with urgent emphasis",
-            "text": "We need to find the conductor and get everyone off this carriage!",
-            "tone": "excited"
+            "text": "I can hear it getting closer, the footsteps echoing through the empty hallway, the lights flickering on and off, and there's something scratching at the door!",
+            "instruction": "Speak with rising panic and fear!",
+            "style": "Rising panic"
           },
           {
-            "style": "Reassuring",
-            "instruction": "Slow down with a reassuring tone",
-            "text": "Take your time. We are all going to be fine.",
-            "tone": "gentle"
+            "text": "Just the wind.",
+            "instruction": "Breathe a sigh of relief.",
+            "style": "Relief"
           }
         ],
+        "boundaries": [
+          0.96,
+          8.56,
+          9.76
+        ],
+        "edit": "Turn this voice into a young girl's voice that features a dark, mid-pitched tone, shallow head resonance, a moderate texture, and a slightly breathy quality.",
+        "referenceMode": "supplied-target"
+      },
+      {
+        "id": "joint_en_03",
+        "title": "A game in four expressions",
+        "text": "And here we are, the final minute of the championship game, tied at ninety-eight. He drives to the left, crosses over, spins back to the right, the defender loses his footing! HE SHOOTS! HE SCORES! BUZZER BEATER! UNBELIEVABLE! What a moment. What a game.",
+        "tags": [
+          "Perceived gender & pitch",
+          "Synthesis reference",
+          "Four expressions"
+        ],
+        "listen": "Follow the buildup from calm anticipation to the scoring moment and the quiet closing, while comparing the voice with the synthesis reference.",
         "audio": {
-          "source": "",
-          "reference": "",
-          "edict": "",
-          "joint": "",
-          "concat": "",
-          "editorConcat": ""
+          "source": "assets/audio/joint_en_03_source_reference.wav",
+          "target": "assets/audio/joint_en_03_synthesis_reference.wav",
+          "edict": "assets/audio/joint_en_03_edict.wav"
         },
-        "boundaries": [],
-        "id": "joint-en-02"
+        "durations": {
+          "source": 4.72,
+          "target": 3.76,
+          "edict": 17.36
+        },
+        "segments": [
+          {
+            "text": "And here we are, the final minute of the championship game, tied at ninety-eight.",
+            "instruction": "Speak with calm anticipation.",
+            "style": "Calm anticipation"
+          },
+          {
+            "text": "He drives to the left, crosses over, spins back to the right, the defender loses his footing!",
+            "instruction": "Speak faster with building tension!",
+            "style": "Building tension"
+          },
+          {
+            "text": "HE SHOOTS! HE SCORES! BUZZER BEATER! UNBELIEVABLE!",
+            "instruction": "Explode with excitement!",
+            "style": "Explosive excitement"
+          },
+          {
+            "text": "What a moment. What a game.",
+            "instruction": "Speak with quiet reverence.",
+            "style": "Quiet reverence"
+          }
+        ],
+        "boundaries": [
+          5.12,
+          10.64,
+          15.04,
+          17.36
+        ],
+        "edit": "Turn this voice into a young adult female speaking with a high pitch, moderate brightness, moderate roughness, and just slight nasality.",
+        "referenceMode": "supplied-target"
       }
     ],
     "zh": [
       {
-        "title": "从宁静到惊叹",
-        "edit": "让声音更明亮，其他音色属性保持不变。",
+        "id": "joint_zh_01",
+        "title": "成熟男声 · 伤感 → 兴奋",
+        "text": "今天的天空灰蒙蒙的，心里也跟着沉重起来。但是！刚刚收到录取通知书了！太开心了！",
         "tags": [
-          "明亮度 ↑",
-          "共享音色锚点"
+          "Male voice",
+          "Synthesis reference",
+          "Two expressions"
         ],
+        "listen": "Compare the voice with the synthesis reference and listen for the shift from sadness to excitement at “但是”.",
+        "audio": {
+          "source": "assets/audio/joint_zh_01_source_reference.wav",
+          "target": "assets/audio/joint_zh_01_synthesis_reference.wav",
+          "edict": "assets/audio/joint_zh_01_edict.wav"
+        },
+        "durations": {
+          "source": 5.68,
+          "target": 2.8,
+          "edict": 9.6
+        },
         "segments": [
           {
-            "style": "平静",
-            "instruction": "平静、稳定地叙述",
-            "text": "安静的村庄里，微风轻轻吹过树梢。",
-            "tone": "calm"
+            "text": "今天的天空灰蒙蒙的，心里也跟着沉重起来。",
+            "instruction": "用伤感的语气说话。",
+            "style": "伤感"
           },
           {
-            "style": "兴奋",
-            "instruction": "兴奋、有活力地强调",
-            "text": "突然，一道明亮的光照亮了整个天空！",
-            "tone": "excited"
-          },
-          {
-            "style": "轻柔",
-            "instruction": "轻声、温柔地收尾",
-            "text": "随后，一切又归于宁静。",
-            "tone": "gentle"
+            "text": "但是！刚刚收到录取通知书了！太开心了！",
+            "instruction": "突然变得开心和兴奋！",
+            "style": "开心 · 兴奋"
           }
         ],
-        "audio": {
-          "source": "",
-          "reference": "",
-          "edict": "",
-          "joint": "",
-          "concat": "",
-          "editorConcat": ""
-        },
-        "boundaries": [],
-        "id": "joint-zh-01"
+        "boundaries": [
+          5.28,
+          9.6
+        ],
+        "edit": "把这条声音转变成成熟年长男性的嗓音，音域降至中等，整体音色变得暗沉且轻薄纤细，并将明显的鼻音减弱为轻微。",
+        "referenceMode": "supplied-target",
+        "instructionDisplay": "concise"
       },
       {
-        "title": "低沉厚实的声音与变化的语速",
-        "edit": "降低音高音区，增加声音厚度，其他音色属性保持不变。",
+        "id": "joint_zh_02",
+        "title": "成熟女声 · 克制 → 愤怒",
+        "text": "今天的会议一切正常，大家都很配合。但是后来他居然当众否定了我所有的方案！",
         "tags": [
-          "音高音区 ↓",
-          "声音厚度 ↑"
+          "Female voice",
+          "Synthesis reference",
+          "Two expressions"
         ],
+        "listen": "Compare the voice with the synthesis reference and listen for the change from restrained narration to anger at “但是后来”.",
+        "audio": {
+          "source": "assets/audio/joint_zh_02_source_reference.wav",
+          "target": "assets/audio/joint_zh_02_synthesis_reference.wav",
+          "edict": "assets/audio/joint_zh_02_edict.wav"
+        },
+        "durations": {
+          "source": 7.12,
+          "target": 7.84,
+          "edict": 7.52
+        },
         "segments": [
           {
-            "style": "平稳",
-            "instruction": "缓慢、平稳地开始",
-            "text": "列车停在了弯道外不远的地方。",
-            "tone": "calm"
+            "text": "今天的会议一切正常，大家都很配合。",
+            "instruction": "平静地叙述。",
+            "style": "平静"
           },
           {
-            "style": "急切",
-            "instruction": "加快语速，急切地强调",
-            "text": "我们得找到列车员，赶快让大家离开这节车厢！",
-            "tone": "excited"
-          },
-          {
-            "style": "安抚",
-            "instruction": "放慢语速，用安抚的语气",
-            "text": "别着急，慢慢来。我们都会没事的。",
-            "tone": "gentle"
+            "text": "但是后来他居然当众否定了我所有的方案！",
+            "instruction": "变得非常愤怒！",
+            "style": "愤怒"
           }
         ],
+        "boundaries": [
+          4.0,
+          7.52
+        ],
+        "edit": "把这条声音改成成熟年长女性的嗓音，音调提至高音域，共鸣调至均衡，声音质地变得适中，同时带上轻微气声，并将鼻音减弱到轻微程度。",
+        "referenceMode": "supplied-target",
+        "instructionDisplay": "concise"
+      },
+      {
+        "id": "joint_zh_03",
+        "title": "成熟女声 · 低沉 → 紧张 → 释然",
+        "text": "夜深了。走廊尽头传来一阵急促的脚步声，越来越近，越来越近，我屏住呼吸不敢出声，手心全是冷汗！原来是猫。",
+        "tags": [
+          "Female voice",
+          "Synthesis reference",
+          "Three expressions"
+        ],
+        "listen": "Compare the voice with the synthesis reference and follow the shift from a subdued opening to rising fear and relief at “原来是猫”.",
         "audio": {
-          "source": "",
-          "reference": "",
-          "edict": "",
-          "joint": "",
-          "concat": "",
-          "editorConcat": ""
+          "source": "assets/audio/joint_zh_03_source_reference.wav",
+          "target": "assets/audio/joint_zh_03_synthesis_reference.wav",
+          "edict": "assets/audio/joint_zh_03_edict.wav"
         },
-        "boundaries": [],
-        "id": "joint-zh-02"
+        "durations": {
+          "source": 7.92,
+          "target": 1.26,
+          "edict": 11.52
+        },
+        "segments": [
+          {
+            "text": "夜深了。",
+            "instruction": "用低沉神秘的语气。",
+            "style": "神秘 · 低沉"
+          },
+          {
+            "text": "走廊尽头传来一阵急促的脚步声，越来越近，越来越近，我屏住呼吸不敢出声，手心全是冷汗！",
+            "instruction": "用紧张悬疑的语气，语速加快！",
+            "style": "紧张 · 加速"
+          },
+          {
+            "text": "原来是猫。",
+            "instruction": "用如释重负的语气，慢慢放松。",
+            "style": "释然 · 放松"
+          }
+        ],
+        "boundaries": [
+          1.68,
+          9.84,
+          11.52
+        ],
+        "edit": "把这条原音变成那种暗沉且厚薄适中的成熟女声，共鸣往下走变成偏胸腔深共鸣，音质带点粗糙沙哑感，同时加上轻微气声和明显鼻音。",
+        "referenceMode": "supplied-target",
+        "instructionDisplay": "concise"
       }
     ]
   },
   "voice": {
-    "single": {
-      "en": [
-        {
-          "title": "A brighter voice",
-          "edit": "Make the voice brighter. Keep its other voice attributes unchanged.",
-          "tags": [
-            "Brightness ↑",
-            "Other attributes: keep"
-          ],
-          "text": "Beyond the window, the city was waking up to a brand new day.",
-          "listen": "Listen for a brighter voice quality, while checking whether the other voice characteristics stay consistent.",
-          "audio": {
-            "source": "",
-            "baseline": "",
-            "edict": "",
-            "target": "",
-            "qwenBase": "",
-            "cosy": ""
-          },
-          "id": "voice-single-en-01"
+    "en": [
+      {
+        "id": "timbre_en_01",
+        "title": "Vocal weight and resonance",
+        "text": "The meeting materials are in the shared folder and can be downloaded as needed. This is material group 434.",
+        "tags": [
+          "Perceived gender",
+          "Vocal weight",
+          "Resonance"
+        ],
+        "listen": "How closely each output follows the edit instruction.",
+        "audio": {
+          "source": "assets/audio/timbre_en_01_source_reference.wav",
+          "target": "assets/audio/timbre_en_01_target_reference.wav",
+          "edict": "assets/audio/timbre_en_01_edict.wav",
+          "qwen_vd": "assets/audio/timbre_en_01_qwen3_tts_vd.wav",
+          "qwen_base": "assets/audio/timbre_en_01_qwen3_tts_base.wav",
+          "cosyvoice2": "assets/audio/timbre_en_01_cosyvoice2.wav"
         },
-        {
-          "title": "A smoother voice",
-          "edit": "Reduce the roughness of the voice. Keep the other voice attributes unchanged.",
-          "tags": [
-            "Roughness ↓",
-            "Other attributes: keep"
-          ],
-          "text": "The old bookshop stood at the end of a narrow, sunlit street.",
-          "listen": "Compare roughness before and after editing, and listen for unintended changes in other voice qualities.",
-          "audio": {
-            "source": "",
-            "baseline": "",
-            "qwenBase": "",
-            "cosy": "",
-            "edict": "",
-            "target": ""
-          },
-          "id": "voice-single-en-02"
-        }
-      ],
-      "zh": [
-        {
-          "title": "更明亮的声音",
-          "edit": "让声音更明亮，其他音色属性保持不变。",
-          "tags": [
-            "明亮度 ↑",
-            "其他属性保持不变"
-          ],
-          "text": "窗外的城市正在慢慢苏醒，迎接崭新的一天。",
-          "listen": "听声音是否更明亮，同时留意其他音色特征是否保持稳定。",
-          "audio": {
-            "source": "",
-            "baseline": "",
-            "edict": "",
-            "target": "",
-            "qwenBase": "",
-            "cosy": ""
-          },
-          "id": "voice-single-zh-01"
+        "durations": {
+          "source": 8.88,
+          "target": 7.76,
+          "edict": 8.37125,
+          "qwen_vd": 8.72,
+          "qwen_base": 6.488542,
+          "cosyvoice2": 7.52
         },
-        {
-          "title": "更平滑的声音",
-          "edit": "减轻声音的粗糙感，其他音色属性保持不变。",
-          "tags": [
-            "粗糙度 ↓",
-            "其他属性保持不变"
-          ],
-          "text": "那家老书店坐落在一条洒满阳光的狭窄街道尽头。",
-          "listen": "对照粗糙感是否减轻，并注意其他声音特征是否发生了非预期变化。",
-          "audio": {
-            "source": "",
-            "baseline": "",
-            "qwenBase": "",
-            "cosy": "",
-            "edict": "",
-            "target": ""
-          },
-          "id": "voice-single-zh-02"
-        }
-      ]
-    },
-    "composed": {
-      "en": [
-        {
-          "title": "Lower and fuller",
-          "edit": "Lower the pitch register and make the voice thicker. Keep the other voice attributes unchanged.",
-          "tags": [
-            "Pitch register ↓",
-            "Vocal weight ↑"
-          ],
-          "text": "Beyond the window, the city was waking up to a brand new day.",
-          "listen": "Listen for both requested changes: a lower pitch register and a fuller voice. Also compare the unedited attributes.",
-          "audio": {
-            "source": "",
-            "baseline": "",
-            "edict": "",
-            "target": "",
-            "qwenBase": "",
-            "cosy": ""
-          },
-          "id": "voice-composed-en-01"
+        "edit": "Turn this male voice into a female one, thickening its medium build into a full, thick sound and shifting its deep chest resonance into a shallower head resonance."
+      },
+      {
+        "id": "timbre_en_02",
+        "title": "Higher pitch, breathiness and nasality",
+        "text": "This guide explains the routine maintenance steps and important notes for the device.",
+        "tags": [
+          "Perceived gender",
+          "Pitch & texture",
+          "Breathiness & nasality"
+        ],
+        "listen": "How closely each output follows the edit instruction.",
+        "audio": {
+          "source": "assets/audio/timbre_en_02_source_reference.wav",
+          "target": "assets/audio/timbre_en_02_target_reference.wav",
+          "edict": "assets/audio/timbre_en_02_edict.wav",
+          "qwen_vd": "assets/audio/timbre_en_02_qwen3_tts_vd.wav",
+          "qwen_base": "assets/audio/timbre_en_02_qwen3_tts_base.wav",
+          "cosyvoice2": "assets/audio/timbre_en_02_cosyvoice2.wav"
         },
-        {
-          "title": "Darker and breathier",
-          "edit": "Make the voice darker and more breathy. Keep the other voice attributes unchanged.",
-          "tags": [
-            "Brightness ↓",
-            "Breathiness ↑"
-          ],
-          "text": "The last light faded slowly over the water as we turned for home.",
-          "listen": "Check both requested changes: darker timbre and greater breathiness. Compare unedited voice qualities as well.",
-          "audio": {
-            "source": "",
-            "baseline": "",
-            "qwenBase": "",
-            "cosy": "",
-            "edict": "",
-            "target": ""
-          },
-          "id": "voice-composed-en-02"
-        }
-      ],
-      "zh": [
-        {
-          "title": "更低沉、更厚实",
-          "edit": "降低音高音区，让声音更厚实，其他音色属性保持不变。",
-          "tags": [
-            "音高音区 ↓",
-            "声音厚度 ↑"
-          ],
-          "text": "窗外的城市正在慢慢苏醒，迎接崭新的一天。",
-          "listen": "听音高音区是否降低、声音是否更厚实，同时比较未指定修改的音色属性。",
-          "audio": {
-            "source": "",
-            "baseline": "",
-            "edict": "",
-            "target": "",
-            "qwenBase": "",
-            "cosy": ""
-          },
-          "id": "voice-composed-zh-01"
+        "durations": {
+          "source": 6.72,
+          "target": 4.88,
+          "edict": 4.550167,
+          "qwen_vd": 5.920042,
+          "qwen_base": 4.88,
+          "cosyvoice2": 4.96
         },
-        {
-          "title": "更暗、更有气声",
-          "edit": "降低声音明亮度，增加气声感，其他音色属性保持不变。",
-          "tags": [
-            "明亮度 ↓",
-            "气声感 ↑"
-          ],
-          "text": "水面上的最后一缕亮光慢慢消失，我们转身踏上了归途。",
-          "listen": "同时听明亮度降低与气声增强这两个变化，并比较未编辑的声音属性。",
-          "audio": {
-            "source": "",
-            "baseline": "",
-            "qwenBase": "",
-            "cosy": "",
-            "edict": "",
-            "target": ""
-          },
-          "id": "voice-composed-zh-02"
-        }
-      ]
-    },
-    "category": {
-      "en": [
-        {
-          "title": "A more mature impression",
-          "edit": "Change the voice from a young-adult impression to a mature impression. Keep the other voice attributes unchanged.",
-          "tags": [
-            "Young adult → Mature",
-            "Other attributes: keep"
-          ],
-          "text": "Beyond the window, the city was waking up to a brand new day.",
-          "listen": "Listen for the perceived age change. Age impression describes a perceptual voice quality, rather than the speaker's actual age.",
-          "audio": {
-            "source": "",
-            "baseline": "",
-            "edict": "",
-            "target": "",
-            "qwenBase": "",
-            "cosy": ""
-          },
-          "id": "voice-category-en-01"
+        "edit": "Transform this male audio into a female's voice by raising the mid-range pitch to a high pitch, reducing the thick, hoarse texture to a moderate thickness and moderate roughness, and replacing the clear, slightly nasal tone with obvious breathiness and obvious nasality."
+      }
+    ],
+    "zh": [
+      {
+        "id": "timbre_zh_01",
+        "title": "音色转换与质感调整",
+        "text": "这份说明主要介绍设备的日常维护步骤和注意事项。这是第602组材料。",
+        "tags": [
+          "Perceived gender",
+          "Brightness & weight",
+          "Roughness & nasality"
+        ],
+        "listen": "How closely each output follows the edit instruction.",
+        "audio": {
+          "source": "assets/audio/timbre_zh_01_source_reference.wav",
+          "target": "assets/audio/timbre_zh_01_target_reference.wav",
+          "edict": "assets/audio/timbre_zh_01_edict.wav",
+          "qwen_vd": "assets/audio/timbre_zh_01_qwen3_tts_vd.wav",
+          "qwen_base": "assets/audio/timbre_zh_01_qwen3_tts_base.wav",
+          "cosyvoice2": "assets/audio/timbre_zh_01_cosyvoice2.wav"
         },
-        {
-          "title": "A younger adult impression",
-          "edit": "Change the voice from a mature impression to a young-adult impression. Keep the other voice attributes unchanged.",
-          "tags": [
-            "Mature → Young adult",
-            "Other attributes: keep"
-          ],
-          "text": "I still remember the first morning we spent in this little town.",
-          "listen": "Compare perceived age in the reverse editing direction, separately from naturalness and speaker similarity.",
-          "audio": {
-            "source": "",
-            "baseline": "",
-            "qwenBase": "",
-            "cosy": "",
-            "edict": "",
-            "target": ""
-          },
-          "id": "voice-category-en-02"
-        }
-      ],
-      "zh": [
-        {
-          "title": "更成熟的声音印象",
-          "edit": "将声音的年龄印象从青年改为成熟，其他音色属性保持不变。",
-          "tags": [
-            "青年 → 成熟",
-            "其他属性保持不变"
-          ],
-          "text": "窗外的城市正在慢慢苏醒，迎接崭新的一天。",
-          "listen": "听声音的感知年龄是否变化。这里的年龄印象指听感上的声音特征，并非说话人的真实年龄。",
-          "audio": {
-            "source": "",
-            "baseline": "",
-            "edict": "",
-            "target": "",
-            "qwenBase": "",
-            "cosy": ""
-          },
-          "id": "voice-category-zh-01"
+        "durations": {
+          "source": 8.16,
+          "target": 6.56,
+          "edict": 6.59125,
+          "qwen_vd": 7.6,
+          "qwen_base": 5.52,
+          "cosyvoice2": 20.8
         },
-        {
-          "title": "更年轻的成人声音印象",
-          "edit": "将声音的年龄印象从成熟改为青年，其他音色属性保持不变。",
-          "tags": [
-            "成熟 → 青年",
-            "其他属性保持不变"
-          ],
-          "text": "我还记得我们在这座小城度过的第一个早晨。",
-          "listen": "比较反向编辑后的年龄印象，并将它与自然度和说话人相似度分别判断。",
-          "audio": {
-            "source": "",
-            "baseline": "",
-            "qwenBase": "",
-            "cosy": "",
-            "edict": "",
-            "target": ""
-          },
-          "id": "voice-category-zh-02"
-        }
-      ]
-    }
+        "edit": "把这条明亮且厚重饱满的男声改成女声，让音色变得明暗适中、厚薄适中，把原本适中的质地变得粗糙沙哑，并从无鼻音转为轻微鼻音。"
+      },
+      {
+        "id": "timbre_zh_02",
+        "title": "成人声线与沙哑质感",
+        "text": "如果路面比较湿滑，请放慢脚步并注意观察周围情况。",
+        "tags": [
+          "Age impression",
+          "Pitch & roughness",
+          "Clear oral tone"
+        ],
+        "listen": "How closely each output follows the edit instruction.",
+        "audio": {
+          "source": "assets/audio/timbre_zh_02_source_reference.wav",
+          "target": "assets/audio/timbre_zh_02_target_reference.wav",
+          "edict": "assets/audio/timbre_zh_02_edict.wav",
+          "qwen_vd": "assets/audio/timbre_zh_02_qwen3_tts_vd.wav",
+          "qwen_base": "assets/audio/timbre_zh_02_qwen3_tts_base.wav",
+          "cosyvoice2": "assets/audio/timbre_zh_02_cosyvoice2.wav"
+        },
+        "durations": {
+          "source": 6.32,
+          "target": 5.52,
+          "edict": 7.618042,
+          "qwen_vd": 5.04,
+          "qwen_base": 9.28,
+          "cosyvoice2": 12.48
+        },
+        "edit": "请把这条高音域、质地适中且带轻微气声和轻微鼻音的儿童少年音，转变成低沉音域的成人声线，发声要口腔化无鼻音、清澈无气声，并带有粗糙沙哑的质感。"
+      }
+    ]
   },
   "delivery": {
-    "emotion": {
-      "en": [
-        {
-          "title": "From concern to relief",
-          "segments": [
-            {
-              "style": "Worried",
-              "instruction": "Tense, worried delivery",
-              "text": "I looked everywhere, but the little dog was nowhere to be found.",
-              "tone": "calm"
-            },
-            {
-              "style": "Joyful",
-              "instruction": "Sudden joy and excitement",
-              "text": "Wait, there he is, running straight towards us!",
-              "tone": "excited"
-            },
-            {
-              "style": "Relieved",
-              "instruction": "Gentle, relieved ending",
-              "text": "Come here, little one. You're finally home.",
-              "tone": "gentle"
-            }
-          ],
-          "audio": {
-            "source": "",
-            "concat": "",
-            "joint": "",
-            "ted": "",
-            "edict": ""
-          },
-          "boundaries": [],
-          "id": "delivery-emotion-en-01"
+    "en": [
+      {
+        "id": "local_en_01",
+        "title": "Calm narration → urgent warning",
+        "text": "The weather is quite pleasant today, nothing unusual. Wait, there's a tornado warning! Everyone take cover now!",
+        "tags": [],
+        "listen": "Listen to the change at “Wait”: the pace and urgency should increase while the voice remains connected.",
+        "audio": {
+          "edict": "assets/audio/local_en_01_edict.wav",
+          "joint": "assets/audio/local_en_01_joint.wav",
+          "concat": "assets/audio/local_en_01_concat.wav",
+          "ted_tts": "assets/audio/local_en_01_ted_tts.wav"
         },
-        {
-          "title": "Curiosity, surprise and reflection",
-          "segments": [
-            {
-              "style": "Curious",
-              "instruction": "Ask with gentle curiosity",
-              "text": "I wonder what could be inside that little wooden box.",
-              "tone": "calm"
-            },
-            {
-              "style": "Surprised",
-              "instruction": "React with clear surprise",
-              "text": "It is the letter we thought we had lost years ago!",
-              "tone": "excited"
-            },
-            {
-              "style": "Reflective",
-              "instruction": "Finish quietly and thoughtfully",
-              "text": "Some things find their way back to us, after all.",
-              "tone": "gentle"
-            }
-          ],
-          "audio": {
-            "source": "",
-            "concat": "",
-            "joint": "",
-            "ted": "",
-            "edict": ""
-          },
-          "boundaries": [],
-          "id": "delivery-emotion-en-02"
-        }
-      ],
-      "zh": [
-        {
-          "title": "从担忧到释然",
-          "segments": [
-            {
-              "style": "担忧",
-              "instruction": "紧张、担心的语气",
-              "text": "我找遍了所有地方，还是没有看到那只小狗。",
-              "tone": "calm"
-            },
-            {
-              "style": "惊喜",
-              "instruction": "突然转为开心和激动",
-              "text": "等一下，它在那里，正朝我们跑过来呢！",
-              "tone": "excited"
-            },
-            {
-              "style": "释然",
-              "instruction": "温柔、松了一口气",
-              "text": "过来吧，小家伙。你终于回家了。",
-              "tone": "gentle"
-            }
-          ],
-          "audio": {
-            "source": "",
-            "concat": "",
-            "joint": "",
-            "ted": "",
-            "edict": ""
-          },
-          "boundaries": [],
-          "id": "delivery-emotion-zh-01"
+        "durations": {
+          "edict": 6.64,
+          "joint": 8.72,
+          "concat": 8.72,
+          "ted_tts": 8.16
         },
-        {
-          "title": "好奇、惊讶与沉思",
-          "segments": [
-            {
-              "style": "好奇",
-              "instruction": "带着轻柔的好奇心发问",
-              "text": "我很好奇，那个小木盒里究竟藏着什么。",
-              "tone": "calm"
-            },
-            {
-              "style": "惊讶",
-              "instruction": "表现出明显的惊讶",
-              "text": "竟然是我们以为早就丢失的那封信！",
-              "tone": "excited"
-            },
-            {
-              "style": "沉思",
-              "instruction": "安静、若有所思地结束",
-              "text": "原来有些东西，终究还是会回到我们身边。",
-              "tone": "gentle"
-            }
-          ],
-          "audio": {
-            "source": "",
-            "concat": "",
-            "joint": "",
-            "ted": "",
-            "edict": ""
+        "segments": [
+          {
+            "text": "The weather is quite pleasant today, nothing unusual.",
+            "instruction": "Speak calmly and slowly.",
+            "style": "Calm & slow"
           },
-          "boundaries": [],
-          "id": "delivery-emotion-zh-02"
-        }
-      ]
-    },
-    "pace": {
-      "en": [
-        {
-          "title": "Slow, quick, then slow",
-          "segments": [
-            {
-              "style": "Slow",
-              "instruction": "Speak slowly and evenly",
-              "text": "Take a moment. Look around, and breathe in the morning air.",
-              "tone": "calm"
-            },
-            {
-              "style": "Fast",
-              "instruction": "Increase the speaking rate",
-              "text": "Now grab your bag, find your keys, and hurry to the station!",
-              "tone": "excited"
-            },
-            {
-              "style": "Slow",
-              "instruction": "Return to a slow pace",
-              "text": "We made it. There is still a little time to spare.",
-              "tone": "gentle"
-            }
-          ],
-          "audio": {
-            "source": "",
-            "concat": "",
-            "joint": "",
-            "ted": "",
-            "edict": ""
-          },
-          "boundaries": [],
-          "id": "delivery-pace-en-01"
+          {
+            "text": "Wait, there's a tornado warning! Everyone take cover now!",
+            "instruction": "Switch to an urgent, fast-paced tone!",
+            "style": "Urgent & fast"
+          }
+        ],
+        "boundaries": [],
+        "globalInstruction": "Speak in a middle-aged man's voice."
+      },
+      {
+        "id": "local_en_02",
+        "title": "Sadness → hope",
+        "text": "The rain kept falling, mirroring the tears in my heart. But then I saw a rainbow breaking through the clouds!",
+        "tags": [],
+        "listen": "Listen for the shift from sadness to hope at “But then” and whether the voice remains consistent across the change.",
+        "audio": {
+          "edict": "assets/audio/local_en_02_edict.wav",
+          "joint": "assets/audio/local_en_02_joint.wav",
+          "concat": "assets/audio/local_en_02_concat.wav",
+          "ted_tts": "assets/audio/local_en_02_ted_tts.wav"
         },
-        {
-          "title": "Quick instructions, a slow detail, a quick finish",
-          "segments": [
-            {
-              "style": "Fast",
-              "instruction": "Speak quickly and clearly",
-              "text": "Turn left, cross the bridge, and follow the road to the square.",
-              "tone": "calm"
-            },
-            {
-              "style": "Slow",
-              "instruction": "Slow down noticeably",
-              "text": "There, beneath the clock, you will see a small blue door.",
-              "tone": "excited"
-            },
-            {
-              "style": "Fast",
-              "instruction": "Resume a fast speaking rate",
-              "text": "Knock twice, leave the parcel, and come straight back!",
-              "tone": "gentle"
-            }
-          ],
-          "audio": {
-            "source": "",
-            "concat": "",
-            "joint": "",
-            "ted": "",
-            "edict": ""
-          },
-          "boundaries": [],
-          "id": "delivery-pace-en-02"
-        }
-      ],
-      "zh": [
-        {
-          "title": "慢、快、再放慢",
-          "segments": [
-            {
-              "style": "慢速",
-              "instruction": "缓慢、平稳地说",
-              "text": "先停一会儿，看看周围，呼吸清晨的空气。",
-              "tone": "calm"
-            },
-            {
-              "style": "快速",
-              "instruction": "明显加快语速",
-              "text": "现在拿上包，找到钥匙，赶快出发去车站！",
-              "tone": "excited"
-            },
-            {
-              "style": "放慢",
-              "instruction": "恢复缓慢的语速",
-              "text": "我们赶上了，还可以稍微休息一下。",
-              "tone": "gentle"
-            }
-          ],
-          "audio": {
-            "source": "",
-            "concat": "",
-            "joint": "",
-            "ted": "",
-            "edict": ""
-          },
-          "boundaries": [],
-          "id": "delivery-pace-zh-01"
+        "durations": {
+          "edict": 7.52,
+          "joint": 7.68,
+          "concat": 7.44,
+          "ted_tts": 7.28
         },
-        {
-          "title": "快速指引、慢速细节与快速收尾",
-          "segments": [
-            {
-              "style": "快速",
-              "instruction": "快速、清晰地说",
-              "text": "左转，过桥，沿着这条路走到广场。",
-              "tone": "calm"
-            },
-            {
-              "style": "慢速",
-              "instruction": "明显放慢语速",
-              "text": "在那里，钟楼下面，有一扇小小的蓝色门。",
-              "tone": "excited"
-            },
-            {
-              "style": "快速",
-              "instruction": "恢复快速语速",
-              "text": "敲两下门，放下包裹，然后马上回来！",
-              "tone": "gentle"
-            }
-          ],
-          "audio": {
-            "source": "",
-            "concat": "",
-            "joint": "",
-            "ted": "",
-            "edict": ""
+        "segments": [
+          {
+            "text": "The rain kept falling, mirroring the tears in my heart.",
+            "instruction": "Speak with sadness and grief.",
+            "style": "Sad & grieving"
           },
-          "boundaries": [],
-          "id": "delivery-pace-zh-02"
-        }
-      ]
-    },
-    "emphasis": {
-      "en": [
-        {
-          "title": "A pause that changes the moment",
-          "segments": [
-            {
-              "style": "Measured",
-              "instruction": "Pause after the first clause",
-              "text": "When the room fell silent, she opened the envelope.",
-              "tone": "calm"
-            },
-            {
-              "style": "Emphatic",
-              "instruction": "Strongly emphasize 'you'",
-              "text": "The person we have chosen is you!",
-              "tone": "excited"
-            },
-            {
-              "style": "Soft",
-              "instruction": "Softer, with a brief pause",
-              "text": "For a moment, nobody said a word.",
-              "tone": "gentle"
-            }
-          ],
-          "audio": {
-            "source": "",
-            "concat": "",
-            "joint": "",
-            "ted": "",
-            "edict": ""
-          },
-          "boundaries": [],
-          "id": "delivery-emphasis-en-01"
+          {
+            "text": "But then I saw a rainbow breaking through the clouds!",
+            "instruction": "Suddenly become hopeful and uplifting!",
+            "style": "Hopeful & uplifting"
+          }
+        ],
+        "boundaries": [],
+        "globalInstruction": "Speak in a young woman's voice."
+      }
+    ],
+    "zh": [
+      {
+        "id": "local_zh_01",
+        "title": "神秘 → 紧张 → 释然",
+        "text": "夜深了。走廊尽头传来一阵急促的脚步声，越来越近，越来越近，我屏住呼吸不敢出声，手心全是冷汗！原来是猫。",
+        "tags": [],
+        "listen": "Listen for rising tension through the long middle segment and a relaxed return on “原来是猫”.",
+        "audio": {
+          "edict": "assets/audio/local_zh_01_edict.wav",
+          "joint": "assets/audio/local_zh_01_joint.wav",
+          "concat": "assets/audio/local_zh_01_concat.wav",
+          "ted_tts": "assets/audio/local_zh_01_ted_tts.wav"
         },
-        {
-          "title": "Changing contrastive emphasis",
-          "segments": [
-            {
-              "style": "Contrast",
-              "instruction": "Emphasize today, rather than tomorrow",
-              "text": "We need to finish this today, not tomorrow.",
-              "tone": "calm"
-            },
-            {
-              "style": "Pause",
-              "instruction": "Pause after the word listen",
-              "text": "Listen, there is one thing I want you to remember.",
-              "tone": "excited"
-            },
-            {
-              "style": "Emphasis",
-              "instruction": "Emphasize together",
-              "text": "Whatever happens next, we will face it together.",
-              "tone": "gentle"
-            }
-          ],
-          "audio": {
-            "source": "",
-            "concat": "",
-            "joint": "",
-            "ted": "",
-            "edict": ""
-          },
-          "boundaries": [],
-          "id": "delivery-emphasis-en-02"
-        }
-      ],
-      "zh": [
-        {
-          "title": "用停顿与重音推进叙事",
-          "segments": [
-            {
-              "style": "停顿",
-              "instruction": "在第一个分句后停顿",
-              "text": "房间里安静下来以后，她打开了那个信封。",
-              "tone": "calm"
-            },
-            {
-              "style": "重音",
-              "instruction": "重读“你”",
-              "text": "我们最终选中的那个人，就是你！",
-              "tone": "excited"
-            },
-            {
-              "style": "轻声",
-              "instruction": "轻声说，带短暂停顿",
-              "text": "一时间，谁都没有说话。",
-              "tone": "gentle"
-            }
-          ],
-          "audio": {
-            "source": "",
-            "concat": "",
-            "joint": "",
-            "ted": "",
-            "edict": ""
-          },
-          "boundaries": [],
-          "id": "delivery-emphasis-zh-01"
+        "durations": {
+          "edict": 11.6,
+          "joint": 12.4,
+          "concat": 10.96,
+          "ted_tts": 11.28
         },
-        {
-          "title": "变化的对比重音",
-          "segments": [
-            {
-              "style": "对比重音",
-              "instruction": "重读“今天”，与“明天”形成对比",
-              "text": "我们需要今天完成这件事，不是明天。",
-              "tone": "calm"
-            },
-            {
-              "style": "停顿",
-              "instruction": "在“听着”之后停顿",
-              "text": "听着，有一件事我希望你记住。",
-              "tone": "excited"
-            },
-            {
-              "style": "强调",
-              "instruction": "重读“一起”",
-              "text": "不管接下来发生什么，我们都会一起面对。",
-              "tone": "gentle"
-            }
-          ],
-          "audio": {
-            "source": "",
-            "concat": "",
-            "joint": "",
-            "ted": "",
-            "edict": ""
+        "segments": [
+          {
+            "text": "夜深了。",
+            "instruction": "用低沉神秘的语气。",
+            "style": "神秘 · 低沉"
           },
-          "boundaries": [],
-          "id": "delivery-emphasis-zh-02"
-        }
-      ]
-    }
+          {
+            "text": "走廊尽头传来一阵急促的脚步声，越来越近，越来越近，我屏住呼吸不敢出声，手心全是冷汗！",
+            "instruction": "用紧张悬疑的语气，语速加快！",
+            "style": "紧张 · 加速"
+          },
+          {
+            "text": "原来是猫。",
+            "instruction": "用如释重负的语气，慢慢放松。",
+            "style": "释然 · 放松"
+          }
+        ],
+        "boundaries": [],
+        "globalInstruction": "用一位沉稳的男性声音说话。"
+      },
+      {
+        "id": "local_zh_02",
+        "title": "平静叙述 → 愤怒表达",
+        "text": "今天的会议一切正常，大家都很配合。但是后来他居然当众否定了我所有的方案！",
+        "tags": [],
+        "listen": "Listen for the emotional change on “但是后来” and whether the same voice is maintained across the switch.",
+        "audio": {
+          "edict": "assets/audio/local_zh_02_edict.wav",
+          "joint": "assets/audio/local_zh_02_joint.wav",
+          "concat": "assets/audio/local_zh_02_concat.wav",
+          "ted_tts": "assets/audio/local_zh_02_ted_tts.wav"
+        },
+        "durations": {
+          "edict": 8.72,
+          "joint": 6.24,
+          "concat": 7.84,
+          "ted_tts": 8.48
+        },
+        "segments": [
+          {
+            "text": "今天的会议一切正常，大家都很配合。",
+            "instruction": "平静地叙述。",
+            "style": "平静"
+          },
+          {
+            "text": "但是后来他居然当众否定了我所有的方案！",
+            "instruction": "变得非常愤怒！",
+            "style": "愤怒"
+          }
+        ],
+        "boundaries": [],
+        "globalInstruction": "用一位中年男性的声音说话。"
+      }
+    ]
   }
 };
