@@ -127,7 +127,7 @@
         button.innerHTML = a.paused ? icons.play : icons.pause;
         button.setAttribute('aria-label', `${a.paused ? 'Play' : 'Pause'} ${label}`);
         slot.classList.toggle('is-playing', !a.paused);
-        slot.querySelector('.player-state').textContent = a.paused ? a.dataset.role === 'edict' ? 'EDICT output' : ['source','target'].includes(a.dataset.role) ? 'Reference audio' : 'Comparison output' : 'Playing';
+        slot.querySelector('.player-state').textContent = a.paused ? a.dataset.role === 'edict' ? 'EDICT output' : ['source','target'].includes(a.dataset.role) ? 'Reference audio' : 'Comparison output' : a.readyState < 3 ? 'Loading…' : 'Playing';
         update();
       };
       button.addEventListener('click', () => { stopSequence(); if (a.paused) play(a); else a.pause(); });
@@ -138,10 +138,12 @@
         slot.querySelector('.audio-status').textContent = ''; updateButton();
       });
       a.addEventListener('pause', updateButton);
+      a.addEventListener('waiting', updateButton);
+      a.addEventListener('playing', updateButton);
       a.addEventListener('loadedmetadata', update);
       a.addEventListener('timeupdate', update);
       a.addEventListener('ended', () => { updateButton(); if (sequence?.current === a) nextInSequence(); });
-      const error = () => { slot.querySelector('.audio-status').textContent = 'Audio unavailable. Reload the page to retry.'; stopSequence(); };
+      const error = () => { slot.querySelector('.audio-status').textContent = 'Audio unavailable. Please try again later.'; stopSequence(); };
       a.addEventListener('error', error); a.querySelector('source').addEventListener('error', error);
     });
   }
