@@ -157,7 +157,7 @@ window.EDICT_DEMOS = {
         },
         "durations": {
           "source": 5.68,
-          "target": 2.8,
+          "target": 6.08,
           "edict": 9.6
         },
         "segments": [
@@ -178,7 +178,10 @@ window.EDICT_DEMOS = {
         ],
         "edit": "把这条声音转变成成熟年长男性的嗓音，音域降至中等，整体音色变得暗沉且轻薄纤细，并将明显的鼻音减弱为轻微。",
         "referenceMode": "editor-output",
-        "instructionDisplay": "concise"
+        "instructionDisplay": "concise",
+        "audioRevisions": {
+          "target": "full-1"
+        }
       },
       {
         "id": "joint_zh_02",
@@ -237,7 +240,7 @@ window.EDICT_DEMOS = {
         },
         "durations": {
           "source": 7.92,
-          "target": 1.26,
+          "target": 4.96,
           "edict": 11.52
         },
         "segments": [
@@ -264,7 +267,10 @@ window.EDICT_DEMOS = {
         ],
         "edit": "把这条原音变成那种暗沉且厚薄适中的成熟女声，共鸣往下走变成偏胸腔深共鸣，音质带点粗糙沙哑感，同时加上轻微气声和明显鼻音。",
         "referenceMode": "editor-output",
-        "instructionDisplay": "concise"
+        "instructionDisplay": "concise",
+        "audioRevisions": {
+          "target": "full-1"
+        }
       }
     ]
   },

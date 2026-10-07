@@ -7,6 +7,7 @@
   const time = seconds => `${Math.floor((seconds || 0) / 60)}:${String(Math.floor((seconds || 0) % 60)).padStart(2, '0')}`;
   const icons = {play:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>', pause:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zm7 0h4v14h-4z" fill="currentColor"/></svg>'};
   let sequence = null;
+  const referenceObserver = new ResizeObserver(drawReferenceBridge);
   function stopSequence(pause = false) {
     if (!sequence) return;
     const old = sequence; sequence = null;
@@ -19,6 +20,7 @@
   function audio(label, d, key, featured = false, colorSegments = false) {
     const src = d.audio[key];
     if (!src) return '';
+    const playbackSrc = d.audioRevisions?.[key] ? `${src}?v=${encodeURIComponent(d.audioRevisions[key])}` : src;
     const peaks = window.EDICT_WAVEFORMS?.[src] || [];
     const bars = peaks.map((p, i) => `<rect x="${i * 4}" y="${16 - Math.max(1, p * 15)}" width="2" height="${Math.max(2, p * 30)}" rx="1"/>`).join('');
     const duration = d.durations[key];
@@ -38,7 +40,7 @@
     };
     // Durations and waveforms are bundled; fetch audio only when the visitor plays it.
     const name = escape(`${label} — ${d.title}`);
-    return `<div class="audio-slot ${featured ? 'featured-audio' : ''}"><div class="audio-header"><strong>${escape(label)}</strong>${featured ? '<span class="ours-label">OURS</span>' : ''}</div><div class="player"><button type="button" class="play-button" aria-label="Play ${name}">${icons.play}</button><div class="waveform${segmented ? ' segmented-wave' : ''}"><div class="wave-base">${wave('base')}</div><div class="wave-progress">${wave('progress')}</div><input type="range" min="0" max="${d.durations[key] || 1}" step="0.01" value="0" aria-label="Seek ${name}" aria-valuetext="0:00" title="${segmented ? 'Colors match the instruction segments. Drag to seek.' : 'Seek audio'}"></div></div><div class="player-bottom"><span class="player-state">${featured ? 'EDICT output' : key === 'source' ? 'Reference audio' : key === 'target' ? 'Reference audio' : 'Comparison output'}</span><span class="player-time">0:00 / ${time(d.durations[key])}</span></div><audio controls preload="none" data-role="${escape(key)}" aria-label="${name}"><source src="${escape(src)}" type="audio/wav"></audio><span class="audio-status" role="status"></span></div>`;
+    return `<div class="audio-slot ${featured ? 'featured-audio' : ''}"><div class="audio-header"><strong>${escape(label)}</strong>${featured ? '<span class="ours-label">OURS</span>' : ''}</div><div class="player"><button type="button" class="play-button" aria-label="Play ${name}">${icons.play}</button><div class="waveform${segmented ? ' segmented-wave' : ''}"><div class="wave-base">${wave('base')}</div><div class="wave-progress">${wave('progress')}</div><input type="range" min="0" max="${d.durations[key] || 1}" step="0.01" value="0" aria-label="Seek ${name}" aria-valuetext="0:00" title="${segmented ? 'Colors match the instruction segments. Drag to seek.' : 'Seek audio'}"></div></div><div class="player-bottom"><span class="player-state">${featured ? 'EDICT output' : key === 'source' ? 'Reference audio' : key === 'target' ? 'Reference audio' : 'Comparison output'}</span><span class="player-time">0:00 / ${time(d.durations[key])}</span></div><audio controls preload="none" data-role="${escape(key)}" aria-label="${name}"><source src="${escape(playbackSrc)}" type="audio/wav"></audio><span class="audio-status" role="status"></span></div>`;
   }
   function scripts(d, timed = false) {
     return `<div class="script-grid" style="--segment-count:${d.segments.length}">${d.segments.map((s, i) => {
@@ -57,12 +59,13 @@
     } else if (type === 'delivery') {
       content = `${cardHeading(d, lang, i)}<div class="comparison-label"><span>Text + local instructions</span><span>${d.segments.length} ordered segments</span></div>${scripts(d)}<div class="comparison-label"><span>Compare the complete utterance</span><span>Same text · Same voice description</span></div><div class="method-players">${audio('Concat.', d, 'concat')}${audio('Joint', d, 'joint')}${audio('TED-TTS', d, 'ted_tts')}${audio('EDICT', d, 'edict', true)}</div><details class="sample-context"><summary>Voice instruction &amp; listening notes <span>+</span></summary><div class="context-body"><span class="field-label">GLOBAL VOICE INSTRUCTION</span><p>${escape(d.globalInstruction)}</p><p class="case-listen"><strong>Listen for.</strong> ${escape(d.listen)}</p></div></details>`;
     } else {
-      content = `<div class="joint-inputs"><div class="joint-request"><span class="field-label"><b>1</b> EDIT THE VOICE</span><p class="edit-copy">“${escape(d.edit)}”</p></div><div class="reference-strip">${audio('Source voice', d, 'source')}${audio('Edited voice · synthesis reference', d, 'target')}</div></div><div class="joint-output-heading"><div><span class="field-label"><b>2</b> SYNTHESIZE WITH LOCAL INSTRUCTIONS</span><h3>${escape(d.title)}</h3></div>${sequenceButton('target,edict', 'Edited voice → Synthesis')}</div><div class="joint-output">${audio('Synthesized speech · Edited timbre', d, 'edict', true, true)}</div><div class="segment-guidance"><span>Click a segment to listen from there</span><span class="playback-caption" aria-live="polite">${d.segments.length} segments · one edited voice</span></div>${scripts(d, true)}<p class="case-listen"><strong>Listen for.</strong> ${escape(d.listen)}</p>`;
+      content = `<div class="joint-inputs"><div class="joint-request"><span class="field-label"><b>1</b> EDIT THE VOICE</span><p class="edit-copy">“${escape(d.edit)}”</p></div><div class="reference-strip">${audio('Source voice', d, 'source')}<div class="edited-reference">${audio('Edited voice', d, 'target')}</div></div></div><div class="reference-bridge" role="img" aria-label="The edited voice is used as the reference speech prompt for local synthesis."><svg aria-hidden="true"><defs><marker id="reference-prompt-arrow" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M 1 1 L 5 3.5 L 1 6" fill="none" stroke="currentColor" stroke-width="1.2"/></marker></defs><path class="reference-bridge-path" marker-end="url(#reference-prompt-arrow)"/></svg><span class="reference-bridge-label">Reference speech prompt</span></div><div class="joint-output-heading"><div><span class="field-label"><b>2</b> SYNTHESIZE WITH LOCAL INSTRUCTIONS</span><h3>${escape(d.title)}</h3></div>${sequenceButton('target,edict', 'Edited voice → Synthesis')}</div><div class="joint-output">${audio('Synthesized speech · Edited timbre', d, 'edict', true, true)}</div><div class="segment-guidance"><span>Click a segment to listen from there</span><span class="playback-caption" aria-live="polite">${d.segments.length} segments · one edited voice</span></div>${scripts(d, true)}<p class="case-listen"><strong>Listen for.</strong> ${escape(d.listen)}</p>`;
     }
     return `<article class="sample ${type === 'joint' ? 'joint-sample' : 'comparison-card'}" data-sample="${escape(d.id)}" aria-label="${escape(d.title)}" lang="${lang === 'zh' ? 'zh-CN' : 'en'}">${content}</article>`;
   }
   function render(type) {
     const container = document.getElementById(type + '-content');
+    if (type === 'joint') referenceObserver.disconnect();
     container.querySelectorAll('audio').forEach(a => a.pause());
     if (type !== 'joint') {
       container.innerHTML = ['en','zh'].map(lang => data[type][lang].map((d, i) => sampleHTML(type, d, lang, i)).join('')).join('');
@@ -82,6 +85,27 @@
       container.innerHTML = sampleHTML(type, list[state.example], state.lang);
     }
     bindAudio(container);
+    if (type === 'joint') {
+      referenceObserver.observe(container.querySelector('.joint-sample'));
+      drawReferenceBridge();
+    }
+  }
+  function drawReferenceBridge() {
+    const sample = document.querySelector('.joint-sample');
+    if (!sample) return;
+    const bridge = sample.querySelector('.reference-bridge');
+    const box = bridge.getBoundingClientRect();
+    const from = sample.querySelector('.edited-reference .audio-slot').getBoundingClientRect();
+    const to = sample.querySelector('.joint-output-heading .field-label b').getBoundingClientRect();
+    const startX = from.left + from.width / 2 - box.left;
+    const startY = from.bottom - box.top + 4;
+    const endX = to.left + to.width / 2 - box.left;
+    const endY = to.top - box.top - 5;
+    const middleY = 26;
+    bridge.querySelector('svg').setAttribute('viewBox', `0 0 ${box.width} ${box.height}`);
+    bridge.querySelector('.reference-bridge-path').setAttribute('d',
+      `M ${startX} ${startY} V ${middleY - 6} Q ${startX} ${middleY} ${startX - 6} ${middleY} H ${endX + 6} Q ${endX} ${middleY} ${endX} ${middleY + 6} V ${endY}`);
+    bridge.querySelector('.reference-bridge-label').style.left = `${(startX + endX) / 2}px`;
   }
   function play(a) {
     if (!a) return;
