@@ -1,4 +1,5 @@
-/* Selected qualitative examples. PCM audio preserved; display wording maintained separately. */
+/* Selected qualitative examples. PCM audio preserved; display wording maintained separately.
+ * Joint references are editor outputs; provenance corrected after confirmation on 2026-10-07. */
 window.EDICT_DEMOS = {
   "joint": {
     "en": [
@@ -8,10 +9,10 @@ window.EDICT_DEMOS = {
         "text": "The rain kept falling, mirroring the tears in my heart. But then I saw a rainbow breaking through the clouds!",
         "tags": [
           "Perceived gender & breathiness",
-          "Synthesis reference",
+          "Edited voice reference",
           "Two expressions"
         ],
-        "listen": "Compare the voice with the synthesis reference and listen for the shift from sadness to hope at “But then”.",
+        "listen": "Compare the voice with the edited voice reference and listen for the shift from sadness to hope at “But then”.",
         "audio": {
           "source": "assets/audio/joint_en_01_source_reference.wav",
           "target": "assets/audio/joint_en_01_synthesis_reference.wav",
@@ -39,7 +40,7 @@ window.EDICT_DEMOS = {
           7.04
         ],
         "edit": "Turn this voice into a noticeably breathy female persona, shifting away from the original male's deep chest resonance to adopt a shallow head resonance, and increasing the initially slight breathiness to a noticeable level.",
-        "referenceMode": "supplied-target"
+        "referenceMode": "editor-output"
       },
       {
         "id": "joint_en_02",
@@ -47,10 +48,10 @@ window.EDICT_DEMOS = {
         "text": "Don't move. I can hear it getting closer, the footsteps echoing through the empty hallway, the lights flickering on and off, and there's something scratching at the door! Just the wind.",
         "tags": [
           "Perceived gender & resonance",
-          "Synthesis reference",
+          "Edited voice reference",
           "Three expressions"
         ],
-        "listen": "Listen for a nervous whisper, rising panic through the longer middle segment, and relief on “Just the wind”, while comparing the voice with the synthesis reference.",
+        "listen": "Listen for a nervous whisper, rising panic through the longer middle segment, and relief on “Just the wind”, while comparing the voice with the edited voice reference.",
         "audio": {
           "source": "assets/audio/joint_en_02_source_reference.wav",
           "target": "assets/audio/joint_en_02_synthesis_reference.wav",
@@ -84,7 +85,7 @@ window.EDICT_DEMOS = {
           9.76
         ],
         "edit": "Turn this voice into a young girl's voice that features a dark, mid-pitched tone, shallow head resonance, a moderate texture, and a slightly breathy quality.",
-        "referenceMode": "supplied-target"
+        "referenceMode": "editor-output"
       },
       {
         "id": "joint_en_03",
@@ -92,10 +93,10 @@ window.EDICT_DEMOS = {
         "text": "And here we are, the final minute of the championship game, tied at ninety-eight. He drives to the left, crosses over, spins back to the right, the defender loses his footing! HE SHOOTS! HE SCORES! BUZZER BEATER! UNBELIEVABLE! What a moment. What a game.",
         "tags": [
           "Perceived gender & pitch",
-          "Synthesis reference",
+          "Edited voice reference",
           "Four expressions"
         ],
-        "listen": "Follow the buildup from calm anticipation to the scoring moment and the quiet closing, while comparing the voice with the synthesis reference.",
+        "listen": "Follow the buildup from calm anticipation to the scoring moment and the quiet closing, while comparing the voice with the edited voice reference.",
         "audio": {
           "source": "assets/audio/joint_en_03_source_reference.wav",
           "target": "assets/audio/joint_en_03_synthesis_reference.wav",
@@ -135,7 +136,7 @@ window.EDICT_DEMOS = {
           17.36
         ],
         "edit": "Turn this voice into a young adult female speaking with a high pitch, moderate brightness, moderate roughness, and just slight nasality.",
-        "referenceMode": "supplied-target"
+        "referenceMode": "editor-output"
       }
     ],
     "zh": [
@@ -145,10 +146,10 @@ window.EDICT_DEMOS = {
         "text": "今天的天空灰蒙蒙的，心里也跟着沉重起来。但是！刚刚收到录取通知书了！太开心了！",
         "tags": [
           "Male voice",
-          "Synthesis reference",
+          "Edited voice reference",
           "Two expressions"
         ],
-        "listen": "Compare the voice with the synthesis reference and listen for the shift from sadness to excitement at “但是”.",
+        "listen": "Compare the voice with the edited voice reference and listen for the shift from sadness to excitement at “但是”.",
         "audio": {
           "source": "assets/audio/joint_zh_01_source_reference.wav",
           "target": "assets/audio/joint_zh_01_synthesis_reference.wav",
@@ -176,7 +177,7 @@ window.EDICT_DEMOS = {
           9.6
         ],
         "edit": "把这条声音转变成成熟年长男性的嗓音，音域降至中等，整体音色变得暗沉且轻薄纤细，并将明显的鼻音减弱为轻微。",
-        "referenceMode": "supplied-target",
+        "referenceMode": "editor-output",
         "instructionDisplay": "concise"
       },
       {
@@ -185,10 +186,10 @@ window.EDICT_DEMOS = {
         "text": "今天的会议一切正常，大家都很配合。但是后来他居然当众否定了我所有的方案！",
         "tags": [
           "Female voice",
-          "Synthesis reference",
+          "Edited voice reference",
           "Two expressions"
         ],
-        "listen": "Compare the voice with the synthesis reference and listen for the change from restrained narration to anger at “但是后来”.",
+        "listen": "Compare the voice with the edited voice reference and listen for the change from restrained narration to anger at “但是后来”.",
         "audio": {
           "source": "assets/audio/joint_zh_02_source_reference.wav",
           "target": "assets/audio/joint_zh_02_synthesis_reference.wav",
@@ -216,7 +217,7 @@ window.EDICT_DEMOS = {
           7.52
         ],
         "edit": "把这条声音改成成熟年长女性的嗓音，音调提至高音域，共鸣调至均衡，声音质地变得适中，同时带上轻微气声，并将鼻音减弱到轻微程度。",
-        "referenceMode": "supplied-target",
+        "referenceMode": "editor-output",
         "instructionDisplay": "concise"
       },
       {
@@ -225,10 +226,10 @@ window.EDICT_DEMOS = {
         "text": "夜深了。走廊尽头传来一阵急促的脚步声，越来越近，越来越近，我屏住呼吸不敢出声，手心全是冷汗！原来是猫。",
         "tags": [
           "Female voice",
-          "Synthesis reference",
+          "Edited voice reference",
           "Three expressions"
         ],
-        "listen": "Compare the voice with the synthesis reference and follow the shift from a subdued opening to rising fear and relief at “原来是猫”.",
+        "listen": "Compare the voice with the edited voice reference and follow the shift from a subdued opening to rising fear and relief at “原来是猫”.",
         "audio": {
           "source": "assets/audio/joint_zh_03_source_reference.wav",
           "target": "assets/audio/joint_zh_03_synthesis_reference.wav",
@@ -262,7 +263,7 @@ window.EDICT_DEMOS = {
           11.52
         ],
         "edit": "把这条原音变成那种暗沉且厚薄适中的成熟女声，共鸣往下走变成偏胸腔深共鸣，音质带点粗糙沙哑感，同时加上轻微气声和明显鼻音。",
-        "referenceMode": "supplied-target",
+        "referenceMode": "editor-output",
         "instructionDisplay": "concise"
       }
     ]
